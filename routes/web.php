@@ -1,22 +1,26 @@
 <?php
 
+use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\DoctorController;
 use App\Http\Controllers\Front\HomeController;
+
+
+use App\Http\Controllers\Front\MajorController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/doctors', [DoctorController::class, 'index']);
+Route::get('/majors', [MajorController::class, 'index']);
 
 
 
 
 
+Route::get('/contact', [ContactController::class, 'index']);
+Route::post('/send-message', [ContactController::class, 'sendMessage']);
+
+
+
+
+Route::get('/majors/create', [MajorController::class, 'create']);
+Route::post('/majors', [MajorController::class, 'store']);

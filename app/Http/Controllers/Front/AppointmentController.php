@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class AppointmentController extends Controller
 {
     public function index(){
-        return view('front.appointment.index');
+        return view('front.appointmentس.index');
     }
 }
