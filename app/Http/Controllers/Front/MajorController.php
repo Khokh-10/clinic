@@ -13,21 +13,11 @@ class MajorController extends Controller
     
     public function index()
     {
-        return view('front.majors.index');
+        $majors = Major::orderBy('id', 'desc')->paginate(8);
+
+        return view('front.majors.index',['majors'=>$majors]);
     }
 
-   
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-        ]);
 
-        Major::create([
-            'title' => $request->title,
-        ]);
-
-        return redirect()->route('majors.index')->with('success', 'Major added successfully!');
-    }
 }
 
