@@ -19,17 +19,20 @@
             
        
         <div class="majors-grid">
-            @foreach ($majors as $major)
+            @forelse ($majors as $major)
             <div class="card p-2" style="width: 18rem;">
                 <img src="{{ asset('uploads/majors/' . '1.jpg') }}" class="card-img-top rounded-circle card-image-circle"
                     alt="major">
                 <div class="card-body d-flex flex-column gap-1 justify-content-center">
                     <h4 class="card-title fw-bold text-center">{{$major->name}}</h4>
-                    <a href="./doctors/index.html" class="btn btn-outline-primary card-button">Browse Doctors</a>
+                    <a href="{{ route('doctors', ['major' => $major->id]) }}" class="btn btn-outline-primary card-button">Browse Doctors</a>
+
                 </div>
 
             </div>
-            @endforeach
+            @empty
+            <div class="text-center alert alert-info">there is no majors!</div>
+            @endforelse
   
         </div>
 

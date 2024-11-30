@@ -10,4 +10,15 @@ class Major extends Model
     use HasFactory;
 
     protected $fillable=['name','image'];
+
+
+    public function users() {
+        return $this->hasMany(User::class);
+        
+    }
+
 }
+
+
+
+

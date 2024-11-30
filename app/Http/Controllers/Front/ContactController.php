@@ -4,16 +4,20 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
     public function index(){
+        Gate::authorize('contact');
         return view('front.contact');
     }
 
 
     public function sendMessage(Request $request){
+
+       
 
 
         $request->validate(

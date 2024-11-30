@@ -41,7 +41,21 @@
                             href="{{ url('majors') }}">majors</a>
                         <a type="button" class="btn btn-outline-light navigation--button"
                             href="{{ url('doctors') }}">Doctors</a>
-                        <a type="button" class="btn btn-outline-light navigation--button" href="./login.html">login</a>
+                           @guest
+                               
+                           <a type="button" class="btn btn-outline-light navigation--button" href="{{route('auth.register')}}">register</a>
+                           <a type="button" class="btn btn-outline-light navigation--button" href="{{route('auth.login')}}">login</a>
+                           @endguest 
+                           @auth
+                               <form action="{{route('auth.logout')}}" method="post">
+                                @csrf
+                           <button type="submit" class="btn btn-outline-light navigation--button" >logout</button>
+
+
+                               </form>
+                           @endauth
+                       
+
                     </div>
                 </div>
             </div>

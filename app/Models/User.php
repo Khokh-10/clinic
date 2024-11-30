@@ -17,6 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     public function major(){
+        return $this->belongsTo(Major::class);
+        
+     }
+
+
+     
     protected $fillable = [
         'name',
         'email',
