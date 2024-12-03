@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\MajorController as AdminMajorController;
+
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\DoctorController;
 use App\Http\Controllers\Front\HomeController;
@@ -21,7 +21,9 @@ Route::get('/majors/{major}', [MajorController::class, 'doctors'])->name('doctor
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
 
+
 require_once 'Admin.php';
+
 require_once 'Auth.php';
 
 

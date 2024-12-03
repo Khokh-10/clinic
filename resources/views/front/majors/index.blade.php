@@ -9,10 +9,12 @@
                 <li class="breadcrumb-item active" aria-current="page">majors</li>
             </ol>
         </nav>
+        @auth
         <div class=" mp3 my-2
          text-center">
-            <a href="{{url('majors/add')}}" class="btn btn-success">Add Major</a>
+            <a href="{{route('majors.add')}}" class="btn btn-success">Add Major</a>
         </div>
+        @endauth
 
 
        
@@ -21,7 +23,7 @@
         <div class="majors-grid">
             @forelse ($majors as $major)
             <div class="card p-2" style="width: 18rem;">
-                <img src="{{ asset('uploads/majors/' . '1.jpg') }}" class="card-img-top rounded-circle card-image-circle"
+                <img src="{{ asset('uploads/majors/' . $major->image) }}" class="card-img-top rounded-circle card-image-circle"
                     alt="major">
                 <div class="card-body d-flex flex-column gap-1 justify-content-center">
                     <h4 class="card-title fw-bold text-center">{{$major->name}}</h4>
@@ -35,12 +37,12 @@
             @endforelse
   
         </div>
-
+{{-- 
 <div class="p-2">
 
     
 
     {{$majors->links()}}
-</div>
+</div> --}}
 
 @endsection

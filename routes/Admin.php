@@ -1,9 +1,8 @@
-
-
 <?php
 
-use App\Http\Controllers\Admin\MajorController;
+use App\Http\Controllers\Admin\AdminMajorController;
 
-Route::get('majors/add', [MajorController::class, 'create']);
+Route::get('majors.add', [AdminMajorController::class, 'create'])->name('majors.add');
 
-Route::post('majors', [MajorController::class, 'store']);
+
+Route::post('majors', [AdminMajorController::class, 'store']);

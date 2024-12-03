@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -30,8 +31,12 @@ class AuthController extends Controller
             ]
         );
 
-
-        $user = User::create($data);
+   
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
         Auth::login($user);
 
@@ -50,21 +55,16 @@ class AuthController extends Controller
     {
 
 
-        $data = $request->validate(
+   
 
-            [
-
-                "email" => ['required', 'email'],
-                "password" => ['required', 'string'],
+            $credentials = $request->only('email', 'password');
+          
 
 
-            ]
-        );
+        if (Auth::attempt($credentials)) {
+            
 
-
-        if (Auth::attempt($data)) {
-
-            $user = User::where('email', $data['email'])->first();
+            $user = User::where('email', $credentials['email'])->first();
             Auth::login($user);
               return redirect()->route('home');
         }else {

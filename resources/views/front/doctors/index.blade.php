@@ -12,7 +12,7 @@
             
             @forelse ($doctors as $doctor)
             <div class="card p-2" style="width: 18rem;">
-                <img src="{{ asset('uploads/doctors/' . '2.jpg') }}" class="card-img-top rounded-circle card-image-circle"
+                <img src="{{ asset('uploads/doctors/' . $doctor->image) }}" class="card-img-top rounded-circle card-image-circle"
                     alt="major">
                 <div class="card-body d-flex flex-column gap-1 justify-content-center">
                     <h4 class="card-title fw-bold text-center">{{$doctor->name}}</h4>

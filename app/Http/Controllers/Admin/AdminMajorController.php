@@ -1,17 +1,20 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Major;
 use Illuminate\Http\Request;
 
-class MajorController extends Controller
+class AdminMajorController extends Controller
 {
-    public function create()  {
-        return view('Admin.majors.add');
-        
+    
+    
+    public function create()
+    {
+    
+        return view('Admin.Majors.add');
     }
+
 
 
     public function store(){
