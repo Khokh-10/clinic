@@ -1,44 +1,102 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Major;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AdminMajorController extends Controller
 {
-    
-    
-    public function create()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
     
-        return view('Admin.Majors.add');
+        $majors = Major::paginate(10);
+
+        return view('Admin.pages.Majors.index',compact('majors'));
     }
 
 
 
-    public function store(){
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('Admin.pages.Majors.add');
+       
+    }
 
-        request()->validate(
-            [
-                "name" => ['required','string',"min:5","max:25"],
-                "image" =>['required','image']
-            ]
-            );
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id )
+    {
+        $major=Major::findorfail($id);
+        return view('Admin.pages.Majors.edit',compact('major'));
+
+        
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request,$id)
+    {
+
+        $major=Major::findorfail($id);
+
+           
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
     
-   
+    $major->name = request()->name;
 
+    if ($request->hasFile('image')) {
+        if ($major->image) {
+            Storage::disk('public')->delete($major->image);
+        }
+
+       
         $image_name=request()->image->getclientoriginalname();
         $image_name=time().rand(1,10000).'_'.$image_name;
         request()->image->move(public_path('uploads/majors/'),$image_name);
+        $major->image = $image_name;
+    }
 
-        Major::create([
-            "name" => request()->name,
-            "image" => $image_name,
-        ]);
-        
-        return back()->with('success','data added successfully');
+    $major->save();
 
+    return redirect()->back()->with('success', 'Major updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

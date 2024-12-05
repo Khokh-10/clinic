@@ -66,7 +66,11 @@ class AuthController extends Controller
 
             $user = User::where('email', $credentials['email'])->first();
             Auth::login($user);
-              return redirect()->route('home');
+            if ($user->role === 'admin') { 
+                return redirect()->route('admin.home');
+            } else {
+                return redirect()->route('home'); 
+            }
         }else {
             return redirect()->back()->with('error', "invaild email or password");
         }

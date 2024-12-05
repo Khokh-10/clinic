@@ -2,6 +2,7 @@
 
 <?php
 
+
 use App\Http\Controllers\CustomAuth\AuthController;
 
 route::get('register',[AuthController::class,'register'])->name('auth.register');

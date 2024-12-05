@@ -18,7 +18,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         $role=['doctor','patient','admin'];
-        $roles=$role[rand(0,2)];
+        $roles=$role[rand(0,1)];
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),

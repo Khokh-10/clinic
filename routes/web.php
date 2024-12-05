@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\Front\AppointmentController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\DoctorController;
 use App\Http\Controllers\Front\HomeController;
@@ -20,6 +20,10 @@ Route::get('/majors/{major}', [MajorController::class, 'doctors'])->name('doctor
 
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/send-message', [ContactController::class, 'sendMessage']);
+
+
+Route::get('/appointments{doctor}', [AppointmentController::class, 'index'])->name('appointments');
+
 
 
 require_once 'Admin.php';

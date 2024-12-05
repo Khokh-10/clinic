@@ -9,12 +9,7 @@
                 <li class="breadcrumb-item active" aria-current="page">majors</li>
             </ol>
         </nav>
-        @auth
-        <div class=" mp3 my-2
-         text-center">
-            <a href="{{route('majors.add')}}" class="btn btn-success">Add Major</a>
-        </div>
-        @endauth
+  
 
 
        
@@ -37,12 +32,12 @@
             @endforelse
   
         </div>
-{{-- 
+
 <div class="p-2">
 
     
 
     {{$majors->links()}}
-</div> --}}
+</div>
 
 @endsection
