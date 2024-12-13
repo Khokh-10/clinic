@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger('major_id')->nullable();
 
-            $table->foreign('major_id')->references('id')->on('majors');
+            $table->foreign('major_id')->references('id')->on('majors')->onDelete('cascade');
 
             $table->string('password');
             $table->rememberToken();

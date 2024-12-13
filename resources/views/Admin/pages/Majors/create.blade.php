@@ -18,7 +18,7 @@
         </div>
 
         <!-- Form Start -->
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('majors.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             
             <x-success></x-success>
@@ -29,7 +29,7 @@
                 <!-- Name Field -->
                 <div class=" col-md-7 form-group">
                     <label for="name">Major Name</label>
-                    <input type="text" name="name" id="name" class="form-control"  required>
+                    <input type="text" name="name" id="name" class="form-control"  >
                 </div>
 
                
@@ -46,7 +46,7 @@
 
             <!-- Form Buttons -->
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Update Major</button>
+                <button type="submit" class="btn btn-primary">Add Major</button>
                 <a href="{{ route('majors.index') }}" class="btn btn-secondary">Cancel</a>
             </div>
         </form>

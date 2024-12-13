@@ -38,6 +38,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <x-success></x-success>
+                                    <x-errors></x-errors>
                                     @foreach ($majors as $major)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
@@ -54,9 +56,12 @@
                                                 <a class="btn text-info" href="{{route('majors.edit',$major->id)}}">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <a class="btn text-danger" href="">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
+                                                <form action="{{ route('majors.destory', $major->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                 
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
 

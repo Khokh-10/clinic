@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('appointements', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('subject');
+            $table->string('phone');
             $table->string('email');
-            $table->dateTime('appointment_date');  
+            // $table->dateTime('appointment_date');  
             $table->unsignedBigInteger('patient_id');
-            $table->index('patient_id');
             $table->unsignedBigInteger('doctor_id');
-            $table->index('doctor_id');
             $table->foreign('patient_id')->references('id')->on('users');
             $table->foreign('doctor_id')->references('id')->on('users');
             $table->timestamps();

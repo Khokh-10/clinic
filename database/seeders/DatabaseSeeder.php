@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Appointement;
 use App\Models\Major;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
 
       Major::factory(100)->create();
        User::factory(200)->create();
+      //  Appointement::factory(50)->create();
+
 
        
 
